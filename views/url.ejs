@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <link href="/css/styles.css" rel="stylesheet" type="text/css">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--Navigation bar-->    
+<% include ./includes/navbar.ejs %>
+</head>
+
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/710753344154763264/747050206813749348/mb_yeni_logo.png">
+
+  
+  <html>
+<head>
+<style>
+body {
+background-color: #3f37a8
+}
+</style>
+</head>
+</html>
+  
+  
+  <div class="alert alert-danger" role="alert">
+<center><marquee behavior=alternate>Nasıl Yapacağınızı Bilmiyorsanız En Aşağıdaki Videoyu İzleyebilirsiniz!</marquee></center>
+</div> 
+  
+  
+<body>
+    <h2 style="text-align: center"> Discord Sunucunuzun Linkini Başarıyla Kısalttınız Şimdi Onu İsterseniz Özel Link Yapabilirsiniz! </h2>
+    <br><br>
+    <h4 style="text-align: center"><a href="/<%=url.code%>"><%=url.shorturl%></a></h4>
+    
+    <!--Copy to clipboard-->
+    <div id="secretInfo" style="display: none;"><%=url.shorturl%></div>
+    <div class="wrapper" style="text-align: center;">
+        <button type="button" class="btn btn-primary" id="btnCopy">Kopyala</button>
+    </div>
+    <!--End Copy to clipboard-->
+    
+    <h3 style="text-align: center"><%=message%></h3>
+ 
+  <div class="col-lg-offset-4 col-lg-4" id="panel">
+  <form action="/custom/<%= url.code %>" method="POST">
+    
+    <label style="text-align: center;margin-top: 20px;margin-left: 15rem">Sunucu İsmi</label>
+    <br><br><br><br>
+    <div class="group">
+        <input type="text" required name="custom" autocomplete="off">
+        <label>................................................................. </label>
+    </div>
+ 
+      <input name="findbase" type="hidden" value="findbase" />  </label>
+    <br><br>
+    
+
+    
+<!-- To get current hostname for base URL -->
+<script type="text/javascript">
+document.getElementsByName("findbase")[0].value = window.location.hostname;
+</script>
+
+      <div class="group">
+          <center> <button type="submit" class="btn btn-warning"> Özel Url Oluştur </button></center>
+      </div>
+  </form>
+  </div>
+  
+<!--Copy to clipboard-->
+<script type="text/javascript">
+  var $body = document.getElementsByTagName('body')[0];
+  var $btnCopy = document.getElementById('btnCopy');
+  var secretInfo = document.getElementById('secretInfo').innerHTML;
+  console.log(secretInfo);
+  var copyToClipboard = function(secretInfo) {
+    var $tempInput = document.createElement('INPUT');
+    $body.appendChild($tempInput);
+    $tempInput.setAttribute('value', secretInfo)
+    $tempInput.select();
+    document.execCommand('copy');
+    $body.removeChild($tempInput);
+  }
+  $btnCopy.addEventListener('click', function(ev) {
+    copyToClipboard(secretInfo);
+    alert("Link Başarıyla Kopyalandı!");
+
+  });
+</script>
+
+</body>
+
+</html>
